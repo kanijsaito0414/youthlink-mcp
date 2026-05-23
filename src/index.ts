@@ -1,5 +1,6 @@
 import { google } from 'googleapis';
 import express from 'express';
+import cors from 'cors';
 
 const SPREADSHEET_ID = '1cSQWEdlaoAPmCYsHVnz5td2yaqNBrfTyVyIIycG9fds';
 const MONTH_PREFIX: Record<number, string> = {
@@ -44,6 +45,7 @@ function parseDate(s: string) {
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.get('/', (_req, res) => {
   res.json({ status: 'ok', name: 'YouthLink MCP Server', version: '1.0.0' });
